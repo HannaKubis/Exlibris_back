@@ -4,7 +4,6 @@ import com.exlibris.domain.model.book.Book;
 import com.exlibris.domain.model.friend.Friend;
 import com.exlibris.domain.model.rental.Rental;
 import com.exlibris.repository.RentalDao;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
