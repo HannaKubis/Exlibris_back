@@ -9,7 +9,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -26,13 +29,17 @@ public class Book {
     private int id;
 
     @NotNull
+    @Size(min = 2, max = 60)
     @Column(name = "BOOK_TITLE")
     private String title;
 
     @NotNull
+    @Size(min = 2, max = 60)
     @Column(name = "BOOK_AUTHOR")
     private String author;
 
+    @Min(value = 2)
+    @Max(value = 10000)
     @Column(name = "BOOK_PAGES")
     private int pages;
 
@@ -40,6 +47,7 @@ public class Book {
     @Column(name = "BOOK_IS_RENTED")
     private boolean isRented;
 
+    @NotNull
     @Column(name = "BOOK_STATUS")
     private Read bookStatus;
 
