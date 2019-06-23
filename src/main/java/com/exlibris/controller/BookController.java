@@ -39,7 +39,7 @@ public class BookController {
         return bookMapper.mapBookToBookDto(dbService.addBook(book));
     }
 
-    @PutMapping("books/")
+    @PutMapping("books")
     public BookDto updateBook(@RequestBody Book book) {
         LOGGER.info(UPDATING_BOOK);
         return bookMapper.mapBookToBookDto(dbService.updateBook(book));

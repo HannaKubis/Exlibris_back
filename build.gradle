@@ -8,7 +8,6 @@ apply plugin: 'io.spring.dependency-management'
 group = 'com.exlibris'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
-
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -33,4 +32,5 @@ dependencies {
 
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testCompile group: 'com.h2database', name: 'h2', version: '1.4.199'
 }
