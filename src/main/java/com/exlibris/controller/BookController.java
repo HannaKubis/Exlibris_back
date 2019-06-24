@@ -17,6 +17,7 @@ public class BookController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BookController.class);
     private static final String FETCHING_BOOKS = "Fetching books";
+    private static final String FETCHING_BOOK = "Fetching book";
     private static final String ADDING_BOOK = "Adding book";
     private static final String UPDATING_BOOK = "Updating book";
     private static final String DELETING_BOOK = "Deleting book";
@@ -31,6 +32,12 @@ public class BookController {
     public List<BookDto> getBooks() {
         LOGGER.info(FETCHING_BOOKS);
         return bookMapper.mapBookListToBookDtoList(dbService.getAllBooks());
+    }
+
+    @GetMapping("books/{id}")
+    public BookDto getBook(@PathVariable int id) {
+        LOGGER.info(FETCHING_BOOK);
+        return bookMapper.mapBookToBookDto(dbService.getBookById(id));
     }
 
     @PostMapping("books")
