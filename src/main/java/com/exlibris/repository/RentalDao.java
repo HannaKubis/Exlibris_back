@@ -1,7 +1,9 @@
 package com.exlibris.repository;
 
 import com.exlibris.domain.model.rental.Rental;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -17,7 +19,10 @@ public interface RentalDao extends CrudRepository<Rental, Integer> {
     @Override
     Rental save(Rental rental);
 
-    Rental deleteById(int id);
+    void deleteById(int id);
 
     Rental findById(int id);
+
+    @Query
+    List<Rental> getRentals(@Param("USER") long userId);
 }

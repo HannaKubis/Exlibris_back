@@ -15,7 +15,8 @@ public class FriendMapper {
                 friend.getId(),
                 friend.getName(),
                 friend.getBooks(),
-                friend.getRentals());
+                friend.getRentals(),
+                friend.getUser());
     }
 
     public List<FriendDto> mapFriendListToFriendDtoList(List<Friend> friendList) {
@@ -24,7 +25,8 @@ public class FriendMapper {
                         friend.getId(),
                         friend.getName(),
                         friend.getBooks(),
-                        friend.getRentals()))
+                        friend.getRentals(),
+                        friend.getUser()))
                 .collect(Collectors.toList());
     }
 
@@ -33,7 +35,8 @@ public class FriendMapper {
                 friendDto.getId(),
                 friendDto.getName(),
                 friendDto.getBooks(),
-                friendDto.getRental());
+                friendDto.getRental(),
+                friendDto.getUser());
     }
 
     public List<Friend> mapFriendDtoListToFriendList(List<FriendDto> friendDtoList) {
@@ -42,7 +45,8 @@ public class FriendMapper {
                         friendDto.getId(),
                         friendDto.getName(),
                         friendDto.getBooks(),
-                        friendDto.getRental()))
+                        friendDto.getRental(),
+                        friendDto.getUser()))
                 .collect(Collectors.toList());
     }
 }

@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
+@RequestMapping("db")
 public class RentalController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BookController.class);
@@ -30,7 +31,7 @@ public class RentalController {
     @GetMapping("rentals")
     public List<RentalDto> getRentals() {
         LOGGER.info(FETCHING_RENTALS);
-        return rentalMapper.mapRentalListToRentalDtoList(dbService.getAllRentals());
+        return rentalMapper.mapRentalListToRentalDtoList(dbService.getUserRentalList());
     }
 
     @PostMapping("rentals")
@@ -46,8 +47,8 @@ public class RentalController {
     }
 
     @DeleteMapping("rentals/{id}")
-    public Rental deleteRental(@PathVariable int id) {
+    public void deleteRental(@PathVariable int id) {
         LOGGER.info(DELETING_RENTAL);
-        return dbService.deleteRental(id);
+        dbService.deleteRental(id);
     }
 }

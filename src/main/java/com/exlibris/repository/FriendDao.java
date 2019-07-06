@@ -1,7 +1,9 @@
 package com.exlibris.repository;
 
 import com.exlibris.domain.model.friend.Friend;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -17,7 +19,10 @@ public interface FriendDao extends CrudRepository<Friend, Integer> {
     @Override
     Friend save(Friend friend);
 
-    Friend deleteById(int id);
+    void deleteById(int id);
 
     Friend findById(int id);
+
+    @Query
+    List<Friend> getFriends(@Param("USER") long userId);
 }

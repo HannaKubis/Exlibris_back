@@ -16,7 +16,8 @@ public class RentalMapper {
                 rental.getFriend(),
                 rental.getBook(),
                 rental.getLendDate(),
-                rental.getReturnDate());
+                rental.getReturnDate(),
+                rental.getUser());
     }
 
     public List<RentalDto> mapRentalListToRentalDtoList(List<Rental> rentalList) {
@@ -26,7 +27,8 @@ public class RentalMapper {
                         rental.getFriend(),
                         rental.getBook(),
                         rental.getLendDate(),
-                        rental.getReturnDate()))
+                        rental.getReturnDate(),
+                        rental.getUser()))
                 .collect(Collectors.toList());
     }
 
@@ -36,7 +38,8 @@ public class RentalMapper {
                 rentalDto.getFriend(),
                 rentalDto.getBook(),
                 rentalDto.getLendDate(),
-                rentalDto.getReturnDate());
+                rentalDto.getReturnDate(),
+                rentalDto.getUser());
     }
 
     public List<Rental> mapRentalDtoListToRentalList(List<RentalDto> rentalDtoList) {
@@ -46,7 +49,8 @@ public class RentalMapper {
                         rentalDto.getFriend(),
                         rentalDto.getBook(),
                         rentalDto.getLendDate(),
-                        rentalDto.getReturnDate()))
+                        rentalDto.getReturnDate(),
+                        rentalDto.getUser()))
                 .collect(Collectors.toList());
     }
 }

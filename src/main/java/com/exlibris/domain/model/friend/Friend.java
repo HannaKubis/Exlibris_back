@@ -2,6 +2,7 @@ package com.exlibris.domain.model.friend;
 
 import com.exlibris.domain.model.book.Book;
 import com.exlibris.domain.model.rental.Rental;
+import com.exlibris.domain.model.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +13,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
+
+@NamedQuery(
+        name = "Friend.getFriends",
+        query = "FROM Friend WHERE user_id = :USER"
+)
 
 @Getter
 @Setter
@@ -46,6 +52,11 @@ public class Friend {
             fetch = FetchType.LAZY)
     @Column(name = "RENTAL_ID")
     private List<Rental> rentals;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "UserId")
+    private User user;
 
     public Friend(@NotNull String name, List<Book> books) {
         this.name = name;

@@ -2,6 +2,7 @@ package com.exlibris.domain.model.book;
 
 import com.exlibris.domain.model.friend.Friend;
 import com.exlibris.domain.model.rental.Rental;
+import com.exlibris.domain.model.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +14,11 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+@NamedQuery(
+        name = "Book.getBooks",
+        query = "FROM Book WHERE user_id = :USER"
+)
 
 @Getter
 @Setter
@@ -60,6 +66,11 @@ public class Book {
     @OneToOne
     @JoinColumn(name = "RENTAL_ID")
     private Rental rental;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "UserId")
+    private User user;
 
     public Book(@NotNull String title,
                 @NotNull String author,

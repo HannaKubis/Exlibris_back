@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
 	id 'java'
 }
 
@@ -25,6 +25,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	compileOnly 'org.projectlombok:lombok'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.1.2.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.5.RELEASE'
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	compile 'org.springframework.boot:spring-boot-starter-webflux'
+
+
+
 
 	runtime('mysql:mysql-connector-java')
 

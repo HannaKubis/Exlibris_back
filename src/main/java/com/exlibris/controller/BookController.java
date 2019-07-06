@@ -3,6 +3,7 @@ package com.exlibris.controller;
 import com.exlibris.domain.mapper.BookMapper;
 import com.exlibris.domain.model.book.Book;
 import com.exlibris.domain.model.book.BookDto;
+import com.exlibris.exception.BookNotFoundException;
 import com.exlibris.service.BookDbService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
+@RequestMapping("db")
 public class BookController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BookController.class);
@@ -31,13 +33,13 @@ public class BookController {
     @GetMapping("books")
     public List<BookDto> getBooks() {
         LOGGER.info(FETCHING_BOOKS);
-        return bookMapper.mapBookListToBookDtoList(dbService.getAllBooks());
+        return bookMapper.mapBookListToBookDtoList(dbService.getUserBookList());
     }
 
     @GetMapping("books/{id}")
-    public BookDto getBook(@PathVariable int id) {
+    public BookDto getBook(@PathVariable int id) throws BookNotFoundException {
         LOGGER.info(FETCHING_BOOK);
-        return bookMapper.mapBookToBookDto(dbService.getBookById(id));
+        return bookMapper.mapBookToBookDto(dbService.getBookById(id+100));
     }
 
     @PostMapping("books")
@@ -53,9 +55,9 @@ public class BookController {
     }
 
     @DeleteMapping("books/{id}")
-    public Book deleteBook(@PathVariable int id) {
+    public void deleteBook(@PathVariable int id) {
         LOGGER.info(DELETING_BOOK);
-        return dbService.deleteBook(id);
+        dbService.deleteBook(id);
     }
 
 }

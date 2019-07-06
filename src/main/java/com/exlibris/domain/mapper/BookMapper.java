@@ -19,7 +19,8 @@ public class BookMapper {
                 book.isRented(),
                 book.getBookStatus(),
                 book.getFriend(),
-                book.getRental());
+                book.getRental(),
+                book.getUser());
     }
 
     public List<BookDto> mapBookListToBookDtoList(List<Book> bookList) {
@@ -32,7 +33,8 @@ public class BookMapper {
                         book.isRented(),
                         book.getBookStatus(),
                         book.getFriend(),
-                        book.getRental()))
+                        book.getRental(),
+                        book.getUser()))
                 .collect(Collectors.toList());
     }
 
@@ -45,7 +47,8 @@ public class BookMapper {
                 bookDto.isRented(),
                 bookDto.getBookStatus(),
                 bookDto.getFriend(),
-                bookDto.getRental());
+                bookDto.getRental(),
+                bookDto.getUser());
     }
 
     public List<Book> mapBookDtoListToBookList(List<BookDto> bookDtoList) {
@@ -58,7 +61,8 @@ public class BookMapper {
                         bookDto.isRented(),
                         bookDto.getBookStatus(),
                         bookDto.getFriend(),
-                        bookDto.getRental()))
+                        bookDto.getRental(),
+                        bookDto.getUser()))
                 .collect(Collectors.toList());
     }
 }

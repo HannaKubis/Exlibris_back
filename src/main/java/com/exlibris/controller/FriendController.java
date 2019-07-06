@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
+@RequestMapping("db")
 public class FriendController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FriendController.class);
@@ -30,7 +31,7 @@ public class FriendController {
     @GetMapping("friends")
     public List<FriendDto> getFriends() {
         LOGGER.info(FETCHING_FRIENDS);
-        return friendMapper.mapFriendListToFriendDtoList(dbService.getAllFriends());
+        return friendMapper.mapFriendListToFriendDtoList(dbService.getUserFriendList());
     }
 
     @PostMapping("friends")
@@ -46,8 +47,8 @@ public class FriendController {
     }
 
     @DeleteMapping("friends/{id}")
-    public Friend deleteFriend(@PathVariable int id) {
+    public void deleteFriend(@PathVariable int id) {
         LOGGER.info(DELETING_FRIEND);
-        return dbService.deleteFriend(id);
+        dbService.deleteFriend(id);
     }
 }
